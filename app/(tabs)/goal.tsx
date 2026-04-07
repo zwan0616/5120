@@ -3,36 +3,35 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import AppHeader from '@/components/app_header';
 import {
   Baby,
+  Dumbbell,
   Glasses,
   Lightbulb,
   ShieldPlus,
-  Smile,
-  Dumbbell,
-  Flag,
+  Smile
 } from 'lucide-react-native';
-import AppHeader from '@/components/app_header';
+import React, { useState } from 'react';
+import {
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import BeStrongDetail from '../../components/goal/BeStrongDetail';
+import FeelGoodDetail from '../../components/goal/FeelGoodDetail';
+import FightGermsDetail from '../../components/goal/FightGermsDetail';
 import GrowUpDetail from '../../components/goal/GrowUpDetail';
 import SeeClearDetail from '../../components/goal/SeeClearDetail';
 import ThinkFastDetail from '../../components/goal/ThinkFastDetail';
-import FightGermsDetail from '../../components/goal/FightGermsDetail';
-import FeelGoodDetail from '../../components/goal/FeelGoodDetail';
-import BeStrongDetail from '../../components/goal/BeStrongDetail';
-import type { Goal, SuperFood, Alternative, TryLess } from '../../components/goal/types';
+import type { Alternative, Goal, SuperFood, TryLess } from '../../components/goal/types';
 
 // Re-export types for backward compatibility with imports like `import { Goal } from '../types'`
-export type { Goal, SuperFood, Alternative, TryLess };
+export type { Alternative, Goal, SuperFood, TryLess };
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const CARD_WIDTH = (SCREEN_WIDTH - 48 - 24) / 2;
@@ -74,16 +73,16 @@ const GOALS: Goal[] = [
     description: 'Fuel your eyes for super-vision!',
     mascotTip: 'Carrots have Vitamin A to help you see in the dark! 🥕✨',
     superFoods: [
-      { name: 'Carrots', description: 'Mega dose of Beta-Carotene for night vision!', image: 'https://picsum.photos/seed/carrot/400/400', rating: 2 },
-      { name: 'Blueberries', description: 'Protect your retina with powerful antioxidants.', image: 'https://picsum.photos/seed/blueberries/400/400', rating: 2 },
-      { name: 'Spinach', description: 'Lutein shields your eyes like magic sunglasses!', image: 'https://picsum.photos/seed/spinach/400/400', rating: 2 }
+      { name: 'Carrots', description: 'Mega dose of Beta-Carotene for night vision!', image: 'https://tse3.mm.bing.net/th/id/OIP.6AM2gH5CTSKuvKjK2qy4ZwHaFD?rs=1&pid=ImgDetMain&o=7&rm=3', rating: 2 },
+      { name: 'Blueberries', description: 'Protect your retina with powerful antioxidants.', image: 'https://pic.nximg.cn/file/20230811/33760392_173922575125_2.jpg', rating: 2 },
+      { name: 'Spinach', description: 'Lutein shields your eyes like magic sunglasses!', image: 'https://tse1.mm.bing.net/th/id/OIP.RjIHGF6ropplJEO9Ai2_0QHaGH?rs=1&pid=ImgDetMain&o=7&rm=3', rating: 2 }
     ],
     tryLess: {
       name: 'Sticky Candy',
-      image: 'https://picsum.photos/seed/candy/400/400',
+      image: 'https://th.bing.com/th/id/OIP.pMg98I__KtLWLxHmPSSi0wHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
       alternative: {
         name: 'Blueberries',
-        image: 'https://picsum.photos/seed/blueberries/400/400',
+        image: 'https://pic.nximg.cn/file/20230811/33760392_173922575125_2.jpg',
         tip: 'Sweet berries are way better for your super-vision than sticky candy! 🫐'
       }
     }

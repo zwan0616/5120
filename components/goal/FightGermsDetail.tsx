@@ -1,14 +1,14 @@
+import { ArrowLeft, ShieldCheck } from 'lucide-react-native';
 import React from 'react';
-import { 
-  StyleSheet, 
-  View, 
-  Text, 
-  Image, 
-  ScrollView,
+import {
   Dimensions,
-  TouchableOpacity
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
-import { ShieldCheck, ArrowLeft } from 'lucide-react-native';
 import type { Goal } from './types';
 
 const { width } = Dimensions.get('window');
@@ -83,7 +83,6 @@ export default function FightGermsDetail({ goal, onBack }: { goal: Goal; onBack?
               <Text style={styles.badName}>{goal.tryLess.name}</Text>
             </View>
             <View style={styles.tryLessInfo}>
-              <Text style={styles.alternativeTip}>{goal.tryLess.alternative.tip}</Text>
               <View style={styles.tryThisRow}>
                 <View style={styles.divider} />
                 <Text style={styles.tryThisText}>Try this instead!</Text>
