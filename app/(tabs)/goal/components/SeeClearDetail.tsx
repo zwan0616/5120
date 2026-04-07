@@ -98,6 +98,9 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 24,
+    paddingTop: 16,
+    paddingBottom: 100,
   },
   heroSection: {
     marginBottom: 40,

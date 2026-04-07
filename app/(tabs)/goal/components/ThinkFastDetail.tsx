@@ -83,6 +83,23 @@ export default function ThinkFastDetail({ goal }: { goal: Goal }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 24,
+    paddingTop: 16,
+    paddingBottom: 100,
+  },
+  mascotTipContainer: {
+    backgroundColor: '#FEF3C7',
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 24,
+    borderLeftWidth: 4,
+    borderLeftColor: '#92400E',
+  },
+  mascotTip: {
+    fontSize: 15,
+    lineHeight: 22,
+    color: '#92400E',
+    fontWeight: '600',
   },
   heroSection: {
     marginBottom: 32,

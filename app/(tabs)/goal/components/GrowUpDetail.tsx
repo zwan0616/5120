@@ -101,21 +101,22 @@ export default function GrowUpDetail({ goal }: { goal: Goal }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 24,
+    paddingTop: 16,
+    paddingBottom: 100,
   },
-  heroSection: {
-    marginBottom: 32,
-    alignItems: 'center',
+  mascotTipContainer: {
+    backgroundColor: '#FEF3C7',
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 24,
+    borderLeftWidth: 4,
+    borderLeftColor: '#F59E0B',
   },
-  heroTitle: {
-    fontSize: 32,
-    fontWeight: '900',
-    color: '#36392c',
-    textAlign: 'center',
-    lineHeight: 40,
-  },
-  heroSubtitle: {
-    fontSize: 18,
-    color: '#64748b',
+  mascotTip: {
+    fontSize: 15,
+    lineHeight: 22,
+    color: '#92400E',
     fontWeight: '600',
     marginTop: 8,
     textAlign: 'center',
