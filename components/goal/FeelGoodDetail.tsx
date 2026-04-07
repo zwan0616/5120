@@ -15,7 +15,7 @@ const { width } = Dimensions.get('window');
 
 export default function FeelGoodDetail({ goal }: { goal: Goal }) {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       {/* Hero Section */}
       <View style={styles.heroSection}>
         <View style={styles.heroCard}>
@@ -82,13 +82,15 @@ export default function FeelGoodDetail({ goal }: { goal: Goal }) {
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  contentContainer: {
     paddingHorizontal: 24,
     paddingTop: 16,
     paddingBottom: 100,
