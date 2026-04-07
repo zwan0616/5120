@@ -20,9 +20,9 @@ import {
   ShieldPlus,
   Smile,
   Dumbbell,
-  ArrowLeft,
   Flag,
 } from 'lucide-react-native';
+import AppHeader from '@/components/app_header';
 import GrowUpDetail from '../../components/goal/GrowUpDetail';
 import SeeClearDetail from '../../components/goal/SeeClearDetail';
 import ThinkFastDetail from '../../components/goal/ThinkFastDetail';
@@ -281,25 +281,8 @@ export default function GoalScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.headerButton}
-          onPress={() => selectedGoalId ? setSelectedGoalId(null) : null}
-        >
-          {selectedGoalId ? (
-            <ArrowLeft size={24} color="#1E90FF" />
-          ) : (
-            <Flag size={24} color="#1E90FF" />
-          )}
-        </TouchableOpacity>
-
-        <Text style={styles.headerTitle}>
-          {selectedGoalId ? selectedGoal.title : 'NutriHeroes'}
-        </Text>
-
-        <View style={styles.headerSpacer} />
-      </View>
+      {/* Shared app header with menu button */}
+      <AppHeader title={selectedGoalId ? selectedGoal.title : 'NutriHeroes'} />
 
       {/* Content */}
       {selectedGoalId ? renderGoalDetail() : renderGoalList()}
@@ -311,29 +294,6 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#F6F8EC',
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 24,
-    height: 64,
-    backgroundColor: 'rgba(246, 248, 236, 0.9)',
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(0,0,0,0.05)',
-  },
-  headerButton: {
-    padding: 8,
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: '900',
-    color: '#B45309',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-  },
-  headerSpacer: {
-    width: 40,
   },
   scrollView: {
     flex: 1,

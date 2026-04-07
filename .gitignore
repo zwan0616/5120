@@ -1,1 +1,1 @@
-Nothing should be ignored based on the provided file changes. The only modified file is a TypeScript React component file (.tsx), which is source code and should not be ignored.
+Nothing should be ignored based on the provided file changes. The only modified file is a source code file (`app/(tabs)/goal.tsx`) which should not be added to .gitignore.
