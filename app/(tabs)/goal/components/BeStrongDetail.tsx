@@ -1,183 +1,313 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
-import { Goal } from '../index';
+import { 
+  StyleSheet, 
+  View, 
+  Text, 
+  Image, 
+  ScrollView,
+  Dimensions,
+  TouchableOpacity
+} from 'react-native';
+import { ArrowRight, Star } from 'lucide-react';
+import { Goal } from '../types';
 
-interface BeStrongDetailProps {
-  goal: Goal;
-  onBack: () => void;
-}
+const { width } = Dimensions.get('window');
 
-export default function BeStrongDetail({ goal }: BeStrongDetailProps) {
+export default function BeStrongDetail({ goal }: { goal: Goal }) {
   return (
-    <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-      {/* Mascot Tip */}
-      <View style={styles.mascotTipContainer}>
-        <Text style={styles.mascotTip}>{goal.mascotTip}</Text>
+    <View style={styles.container}>
+      {/* Hero Section */}
+      <View style={styles.heroSection}>
+        <Text style={styles.heroTitle}>Foods for 💪 {goal.title}</Text>
+        <Text style={styles.heroSubtitle}>{goal.description}</Text>
       </View>
 
-      {/* Super Foods Section */}
+      {/* Good Choice Section */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Super Foods</Text>
-        <Text style={styles.sectionDescription}>{goal.description}</Text>
-        
-        {goal.superFoods.map((food, index) => (
-          <View key={index} style={styles.foodCard}>
-            <Image source={{ uri: food.image }} style={styles.foodImage} />
-            <View style={styles.foodInfo}>
-              <Text style={styles.foodName}>{food.name}</Text>
-              <Text style={styles.foodDescription}>{food.description}</Text>
+        <View style={styles.sectionHeader}>
+          <View style={styles.sectionIndicator} />
+          <Text style={styles.sectionTitle}>Good Choice</Text>
+        </View>
+
+        <View style={styles.grid}>
+          {/* Main Card */}
+          <View style={styles.mainCard}>
+            <View style={styles.cardHeader}>
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>GOOD CHOICE</Text>
+              </View>
+              <Text style={styles.foodNameLarge}>{goal.superFoods[0].name}</Text>
+            </View>
+            <View style={styles.mainImageContainer}>
+              <Image 
+                source={{ uri: goal.superFoods[0].image }} 
+                style={styles.mainImage} 
+                resizeMode="cover"
+              />
+            </View>
+            <Text style={styles.descriptionText}>{goal.superFoods[0].description}</Text>
+          </View>
+
+          {/* Row of smaller cards */}
+          <View style={styles.row}>
+            <View style={styles.smallCard}>
+              <View style={styles.smallImageContainer}>
+                <Image 
+                  source={{ uri: goal.superFoods[1].image }} 
+                  style={styles.smallImage} 
+                  resizeMode="contain"
+                />
+              </View>
+              <Text style={styles.foodNameSmall}>{goal.superFoods[1].name}</Text>
+            </View>
+
+            <View style={styles.smallCard}>
+              <View style={styles.smallImageContainer}>
+                <Image 
+                  source={{ uri: goal.superFoods[2].image }} 
+                  style={styles.smallImage} 
+                  resizeMode="contain"
+                />
+              </View>
+              <Text style={styles.foodNameSmall}>{goal.superFoods[2].name}</Text>
             </View>
           </View>
-        ))}
+        </View>
       </View>
 
       {/* Try Less Section */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Try Less Of This</Text>
-        <View style={styles.tryLessCard}>
-          <Image source={{ uri: goal.tryLess.image }} style={styles.tryLessImage} />
-          <Text style={styles.tryLessName}>{goal.tryLess.name}</Text>
+        <View style={styles.sectionHeader}>
+          <View style={[styles.sectionIndicator, { backgroundColor: '#FF8A65' }]} />
+          <Text style={styles.sectionTitle}>Try Less</Text>
         </View>
 
-        <View style={styles.alternativeContainer}>
-          <Text style={styles.alternativeTitle}>Better Choice:</Text>
-          <View style={styles.alternativeCard}>
-            <Image source={{ uri: goal.tryLess.alternative.image }} style={styles.alternativeImage} />
-            <View style={styles.alternativeInfo}>
-              <Text style={styles.alternativeName}>{goal.tryLess.alternative.name}</Text>
-              <Text style={styles.alternativeTip}>{goal.tryLess.alternative.tip}</Text>
+        <View style={styles.tryLessCard}>
+          <View style={styles.tryLessContent}>
+            <View style={styles.choiceRow}>
+              <View style={styles.badImageContainer}>
+                <Image 
+                  source={{ uri: goal.tryLess.image }} 
+                  style={styles.badImage} 
+                  resizeMode="contain"
+                />
+              </View>
+              <ArrowRight color="#3b82f6" size={24} />
+              <View style={styles.goodImageContainer}>
+                <Image 
+                  source={{ uri: goal.tryLess.alternative.image }} 
+                  style={styles.goodImage} 
+                  resizeMode="contain"
+                />
+              </View>
             </View>
+            <Text style={styles.tipText}>{goal.tryLess.alternative.tip}</Text>
           </View>
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  scrollView: {
+  container: {
     flex: 1,
     paddingHorizontal: 24,
     paddingTop: 16,
     paddingBottom: 100,
   },
-  mascotTipContainer: {
-    backgroundColor: '#DBEAFE',
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 24,
-    borderLeftWidth: 4,
-    borderLeftColor: '#2563EB',
+  heroSection: {
+    marginBottom: 32,
+    alignItems: 'center',
   },
-  mascotTip: {
-    fontSize: 15,
-    lineHeight: 22,
-    color: '#1E40AF',
+  heroTitle: {
+    fontSize: 32,
+    fontWeight: '900',
+    color: '#36392c',
+    textAlign: 'center',
+    lineHeight: 40,
+  },
+  heroSubtitle: {
+    fontSize: 18,
+    color: '#64748b',
     fontWeight: '600',
+    marginTop: 8,
+    textAlign: 'center',
   },
   section: {
-    marginBottom: 32,
+    marginBottom: 40,
   },
-  sectionTitle: {
-    fontSize: 22,
-    fontWeight: '900',
-    color: '#B45309',
-    marginBottom: 8,
-  },
-  sectionDescription: {
-    fontSize: 15,
-    color: '#666',
-    lineHeight: 22,
-    marginBottom: 16,
-  },
-  foodCard: {
+  sectionHeader: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
-    borderRadius: 16,
-    overflow: 'hidden',
-    marginBottom: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 4,
-  },
-  foodImage: {
-    width: 100,
-    height: 100,
-  },
-  foodInfo: {
-    flex: 1,
-    padding: 12,
-    justifyContent: 'center',
-  },
-  foodName: {
-    fontSize: 17,
-    fontWeight: '700',
-    color: '#333',
-    marginBottom: 4,
-  },
-  foodDescription: {
-    fontSize: 13,
-    color: '#666',
-    lineHeight: 18,
-  },
-  tryLessCard: {
-    backgroundColor: '#FEE2E2',
-    borderRadius: 16,
-    padding: 16,
     alignItems: 'center',
     marginBottom: 20,
   },
-  tryLessImage: {
-    width: 120,
-    height: 120,
-    borderRadius: 12,
-    marginBottom: 12,
+  sectionIndicator: {
+    width: 6,
+    height: 32,
+    borderRadius: 3,
+    backgroundColor: '#3F51B5',
+    marginRight: 12,
   },
-  tryLessName: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#DC2626',
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '900',
+    color: '#36392c',
   },
-  alternativeContainer: {
-    backgroundColor: '#FEF3C7',
-    borderRadius: 16,
-    padding: 16,
+  grid: {
+    gap: 16,
   },
-  alternativeTitle: {
+  mainCard: {
+    backgroundColor: '#f1f5f9',
+    borderRadius: 24,
+    padding: 24,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 4,
+  },
+  cardHeader: {
+    marginBottom: 16,
+  },
+  badge: {
+    backgroundColor: '#3F51B5',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 20,
+    alignSelf: 'flex-start',
+    marginBottom: 8,
+  },
+  badgeText: {
+    color: '#fff',
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 1,
+  },
+  foodNameLarge: {
+    fontSize: 28,
+    fontWeight: '900',
+    color: '#36392c',
+  },
+  mainImageContainer: {
+    height: 160,
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    overflow: 'hidden',
+    marginBottom: 16,
+    borderWidth: 4,
+    borderColor: '#fff',
+  },
+  mainImage: {
+    width: '100%',
+    height: '100%',
+  },
+  descriptionText: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#92400E',
+    color: '#64748b',
+    fontStyle: 'italic',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 16,
+  },
+  smallCard: {
+    flex: 1,
+    backgroundColor: '#f1f5f9',
+    borderRadius: 20,
+    padding: 16,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 5,
+    elevation: 2,
+  },
+  smallImageContainer: {
+    width: '100%',
+    height: 100,
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8,
     marginBottom: 12,
   },
-  alternativeCard: {
-    flexDirection: 'row',
+  smallImage: {
+    width: '100%',
+    height: '100%',
+  },
+  foodNameSmall: {
+    fontSize: 16,
+    fontWeight: '900',
+    color: '#36392c',
+    textAlign: 'center',
+  },
+  tryLessCard: {
+    backgroundColor: '#fff',
+    borderRadius: 24,
+    padding: 24,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 4,
+    borderWidth: 2,
+    borderStyle: 'dashed',
+    borderColor: 'rgba(0,0,0,0.1)',
+  },
+  tryLessContent: {
     alignItems: 'center',
   },
-  alternativeImage: {
+  choiceRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginBottom: 20,
+  },
+  badImageContainer: {
     width: 80,
     height: 80,
-    borderRadius: 12,
+    backgroundColor: '#f1f5f9',
+    borderRadius: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 12,
   },
-  alternativeInfo: {
-    flex: 1,
-    marginLeft: 16,
+  badImage: {
+    width: '100%',
+    height: '100%',
+    opacity: 0.5,
   },
-  alternativeName: {
-    fontSize: 17,
-    fontWeight: '700',
-    color: '#92400E',
-    marginBottom: 4,
+  goodImageContainer: {
+    width: 100,
+    height: 100,
+    backgroundColor: '#E8EAF6',
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 16,
+    borderWidth: 4,
+    borderColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
   },
-  alternativeTip: {
-    fontSize: 13,
-    color: '#78350F',
-    lineHeight: 18,
+  goodImage: {
+    width: '100%',
+    height: '100%',
+  },
+  tipText: {
+    fontSize: 16,
+    fontWeight: '800',
+    color: '#36392c',
+    textAlign: 'center',
+    fontStyle: 'italic',
+    lineHeight: 24,
   },
 });
