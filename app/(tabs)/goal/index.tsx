@@ -23,19 +23,19 @@ import {
   ArrowLeft,
   Flag,
 } from 'lucide-react-native';
-import GrowUpDetail from './components/GrowUpDetail';
-import SeeClearDetail from './components/SeeClearDetail';
-import ThinkFastDetail from './components/ThinkFastDetail';
-import FightGermsDetail from './components/FightGermsDetail';
-import FeelGoodDetail from './components/FeelGoodDetail';
-import BeStrongDetail from './components/BeStrongDetail';
+import GrowUpDetail from './_components/GrowUpDetail';
+import SeeClearDetail from './_components/SeeClearDetail';
+import ThinkFastDetail from './_components/ThinkFastDetail';
+import FightGermsDetail from './_components/FightGermsDetail';
+import FeelGoodDetail from './_components/FeelGoodDetail';
+import BeStrongDetail from './_components/BeStrongDetail';
 import type { Goal, SuperFood, Alternative, TryLess } from './types';
+
+// Re-export types for backward compatibility with imports like `import { Goal } from '../types'`
+export type { Goal, SuperFood, Alternative, TryLess };
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const CARD_WIDTH = (SCREEN_WIDTH - 48 - 24) / 2;
-
-// Re-export types for backward compatibility
-export type { Goal, SuperFood, Alternative, TryLess };
 
 const GOALS: Goal[] = [
   {
