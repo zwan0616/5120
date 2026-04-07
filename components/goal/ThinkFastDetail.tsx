@@ -62,15 +62,31 @@ export default function ThinkFastDetail({ goal }: { goal: Goal }) {
 
         <View style={styles.tryLessCard}>
           <View style={styles.tryLessContent}>
-            <View style={styles.badChoiceIcon}>
-              <Text style={styles.badEmoji}>🍩</Text>
+            <View style={styles.badChoiceColumn}>
+              <Image 
+                source={{ uri: goal.tryLess.image }} 
+                style={styles.badImage} 
+                resizeMode="contain"
+              />
+              <Text style={styles.badName}>{goal.tryLess.name}</Text>
             </View>
             <View style={styles.tryLessInfo}>
-              <Text style={styles.badName}>{goal.tryLess.name}</Text>
               <Text style={styles.alternativeTip}>{goal.tryLess.alternative.tip}</Text>
               <View style={styles.tryThisRow}>
-                <Text style={styles.goodEmoji}>🫐</Text>
-                <Text style={styles.tryThisText}>Try {goal.tryLess.alternative.name} instead!</Text>
+                <View style={styles.divider} />
+                <Text style={styles.tryThisText}>Try this instead!</Text>
+                <View style={styles.divider} />
+              </View>
+              <View style={styles.goodChoiceRow}>
+                <Image 
+                  source={{ uri: goal.tryLess.alternative.image }} 
+                  style={styles.goodImage} 
+                  resizeMode="contain"
+                />
+                <View style={styles.goodChoiceInfo}>
+                  <Text style={styles.goodName}>{goal.tryLess.alternative.name}</Text>
+                  <Text style={styles.goodTip}>{goal.tryLess.alternative.tip}</Text>
+                </View>
               </View>
             </View>
           </View>
@@ -222,54 +238,89 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 10,
     elevation: 4,
-    borderWidth: 1,
-    borderColor: 'rgba(0,0,0,0.05)',
+    borderWidth: 2,
+    borderStyle: 'dashed',
+    borderColor: 'rgba(0,0,0,0.1)',
   },
   tryLessContent: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
+    flexDirection: 'column',
+    alignItems: 'center',
     gap: 20,
   },
-  badChoiceIcon: {
+  badChoiceColumn: {
+    alignItems: 'center',
+  },
+  badImage: {
     width: 80,
     height: 80,
-    backgroundColor: 'rgba(59, 130, 246, 0.05)',
-    borderRadius: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  badEmoji: {
-    fontSize: 48,
-    opacity: 0.5,
-  },
-  tryLessInfo: {
-    flex: 1,
-  },
-  badName: {
-    fontSize: 20,
-    fontWeight: '900',
-    color: '#36392c',
+    opacity: 0.7,
     marginBottom: 8,
   },
+  badName: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#64748b',
+  },
+  tryLessInfo: {
+    width: '100%',
+    alignItems: 'center',
+  },
   alternativeTip: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '600',
     color: '#64748b',
     fontStyle: 'italic',
-    lineHeight: 24,
+    textAlign: 'center',
+    lineHeight: 20,
     marginBottom: 16,
   },
   tryThisRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    justifyContent: 'center',
+    width: '100%',
+    marginBottom: 16,
   },
-  goodEmoji: {
-    fontSize: 24,
+  divider: {
+    flex: 1,
+    height: 1,
+    backgroundColor: 'rgba(0,0,0,0.1)',
   },
   tryThisText: {
+    fontSize: 12,
+    fontWeight: '900',
+    color: '#3b82f6',
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    marginHorizontal: 16,
+  },
+  goodChoiceRow: {
+    backgroundColor: '#f8fafc',
+    padding: 16,
+    borderRadius: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 16,
+    width: '100%',
+    borderWidth: 1,
+    borderColor: '#E3F2FD',
+  },
+  goodImage: {
+    width: 48,
+    height: 48,
+  },
+  goodChoiceInfo: {
+    flex: 1,
+  },
+  goodName: {
     fontSize: 18,
     fontWeight: '900',
+    color: '#36392c',
+    marginBottom: 2,
+  },
+  goodTip: {
+    fontSize: 12,
+    fontWeight: '600',
     color: '#3b82f6',
   },
 });
