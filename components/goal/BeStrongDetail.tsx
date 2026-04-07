@@ -8,14 +8,20 @@ import {
   Dimensions,
   TouchableOpacity
 } from 'react-native';
-import { ArrowRight, Star } from 'lucide-react-native';
+import { ArrowRight, Star, ArrowLeft } from 'lucide-react-native';
 import type { Goal } from './types';
 
 const { width } = Dimensions.get('window');
 
-export default function BeStrongDetail({ goal }: { goal: Goal }) {
+export default function BeStrongDetail({ goal, onBack }: { goal: Goal; onBack?: () => void }) {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      {/* Custom Back Button */}
+      <TouchableOpacity style={styles.backButton} onPress={onBack}>
+        <ArrowLeft color="#3F51B5" size={28} />
+        <Text style={styles.backButtonText}>Back to Goals</Text>
+      </TouchableOpacity>
+
       {/* Hero Section */}
       <View style={styles.heroSection}>
         <Text style={styles.heroTitle}>Foods for 💪 {goal.title}</Text>
@@ -117,6 +123,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 16,
     paddingBottom: 100,
+  },
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 16,
+    alignSelf: 'flex-start',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    backgroundColor: '#E8EAF6',
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#3F51B5',
+  },
+  backButtonText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#3F51B5',
   },
   heroSection: {
     marginBottom: 32,
