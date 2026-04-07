@@ -18,7 +18,7 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
       <View style={styles.heroSection}>
         <View style={styles.heroImageContainer}>
           <Image 
-            source={{ uri: goal.image }} 
+            source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCrSM32q7XlPujehh6OBCUPQAxm54TnFOlVSbzvWsgAQtxU0KjG2n5wyUpxc_4EiVW9McN_SUvWo7fgk8Awixd4Pa3jdEu0P8Q8p78PeKWQfha8XySUS0wIWtJoY0QmzMHDRWqRoximNSRa8MU1FTDaC5CUdx0jOUJ054Er76eGsdJN0-JWkgHihX8_2EFJJwNygVT_ZyNmxvi_1ntUT5leg-lVCD4Y9xaNHGfXH1Nuzzzz6aqzUwBC9Mm4r_vONOZSeq1fIQL94nuU' }} 
             style={styles.heroImage} 
             resizeMode="contain"
           />
@@ -45,7 +45,11 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
           {goal.superFoods.map((food, i) => (
             <View key={food.name} style={styles.foodCard}>
               <View style={styles.foodImageContainer}>
-                <Text style={styles.foodEmoji}>{food.emoji || '🥕'}</Text>
+                <Image 
+                  source={{ uri: food.image }} 
+                  style={styles.foodImage} 
+                  resizeMode="contain"
+                />
               </View>
               <View style={styles.foodInfo}>
                 <View style={styles.foodTitleRow}>
@@ -110,17 +114,15 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
-    borderRadius: 96,
   },
   heroImage: {
-    width: '80%',
-    height: '80%',
+    width: '100%',
+    height: '100%',
   },
   heroStar: {
     position: 'absolute',
-    top: 8,
-    right: 16,
+    top: -8,
+    right: -8,
     fontSize: 40,
     color: '#3b82f6',
   },
@@ -216,10 +218,12 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
     marginRight: 20,
   },
-  foodEmoji: {
-    fontSize: 48,
+  foodImage: {
+    width: '100%',
+    height: '100%',
   },
   foodInfo: {
     flex: 1,
