@@ -7,7 +7,7 @@ import {
   ScrollView,
   Dimensions
 } from 'react-native';
-import { Goal } from '../types';
+import type { Goal } from '../types';
 
 const { width } = Dimensions.get('window');
 
