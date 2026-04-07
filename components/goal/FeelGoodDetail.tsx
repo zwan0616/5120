@@ -39,16 +39,21 @@ export default function FeelGoodDetail({ goal }: { goal: Goal }) {
         <View style={styles.grid}>
           {goal.superFoods.map((food, i) => (
             <View key={food.name} style={styles.foodCard}>
-              <View style={styles.foodImageContainer}>
+              <View style={styles.imageContainer}>
                 <Image 
                   source={{ uri: food.image }} 
                   style={styles.foodImage} 
                   resizeMode="contain"
                 />
               </View>
-              <Text style={styles.foodName}>{food.name}</Text>
-              <View style={styles.badge}>
-                <Text style={styles.badgeText}>GOOD CHOICE</Text>
+              <View style={styles.foodInfo}>
+                <View style={styles.foodTitleRow}>
+                  <Text style={styles.foodName}>{food.name}</Text>
+                  <Text style={styles.star}>★★</Text>
+                </View>
+                <View style={styles.badge}>
+                  <Text style={styles.badgeText}>GOOD CHOICE</Text>
+                </View>
               </View>
             </View>
           ))}
@@ -176,16 +181,13 @@ const styles = StyleSheet.create({
     color: '#36392c',
   },
   grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
     gap: 16,
   },
   foodCard: {
-    width: (width - 60) / 2,
     backgroundColor: '#f1f5f9',
     padding: 20,
     borderRadius: 20,
+    flexDirection: 'row',
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -193,7 +195,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 2,
   },
-  foodImageContainer: {
+  imageContainer: {
     width: 80,
     height: 80,
     backgroundColor: '#fff',
@@ -201,29 +203,42 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
-    marginBottom: 12,
+    marginRight: 20,
   },
   foodImage: {
     width: '100%',
     height: '100%',
   },
+  foodInfo: {
+    flex: 1,
+  },
+  foodTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
   foodName: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '900',
     color: '#36392c',
-    textAlign: 'center',
-    marginBottom: 8,
+  },
+  star: {
+    color: '#FBC02D',
+    fontSize: 14,
   },
   badge: {
     backgroundColor: '#FFFDE7',
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     paddingVertical: 4,
     borderRadius: 20,
+    alignSelf: 'flex-start',
   },
   badgeText: {
     color: '#FBC02D',
     fontSize: 10,
-    fontWeight: '900',
+    fontWeight: '800',
+    letterSpacing: 1,
   },
   tryLessCard: {
     backgroundColor: '#fff',
