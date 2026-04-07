@@ -7,7 +7,7 @@ import {
   ScrollView,
   Dimensions
 } from 'react-native';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react-native';
 import type { Goal } from '../types';
 
 const { width } = Dimensions.get('window');

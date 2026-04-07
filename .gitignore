@@ -1,43 +1,94 @@
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.o
-*.obj
-dist/
-build/
-target/
-
 # Dependencies
 node_modules/
-venv/
-.venv/
+.expo/
+.webpack/
+
+# Build outputs
+dist/
+build/
+.next/
+.nuxt/
+out/
+
+# Logs
+*.log
+
+# Environment variables
 .env
 .env.local
 .env.*
+!.env.example
 
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
-# Editors
+# IDE specific
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# OS generated files
+# OS generated
 .DS_Store
 Thumbs.db
 
-# Coverage reports
-coverage/
-htmlcov/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
 .coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git/modules/
+*.sublime-project
+*.sublime-workspace
+.hypothesis/
+cover/
+DerivedData/
+.project
+.tm_properties
 
-# Python specific
-.mypy_cache/
-.pytest_cache/
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
 
-# Compressed files
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+lib-cov/
+lcov-report/
+
+# Dependency directories
+jspm_packages/
+julia-*/
+zig*/
+
+# Compiled Binary Files
+*.exe
+*.dll
+*.so
+*.a
+*.o
+*.out
+*.class
+
+# Compressed archives
 *.zip
 *.gz
 *.tar
@@ -60,3 +111,30 @@ htmlcov/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
+
+# Testing
+.mypy_cache/
+.pytest_cache/
+.hypothesis/
+
+# Gradle
+.gradle/
+build/
+
+# Cargo
+target/
+
+# Maven
+target/
+
+# Bazel
+bazel-*
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.manifest
+CMakeScripts/
+Testing/
+Makefile
+cmake-build-*/
