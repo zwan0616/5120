@@ -29,7 +29,7 @@ import ThinkFastDetail from './_components/ThinkFastDetail';
 import FightGermsDetail from './_components/FightGermsDetail';
 import FeelGoodDetail from './_components/FeelGoodDetail';
 import BeStrongDetail from './_components/BeStrongDetail';
-import type { Goal, SuperFood, Alternative, TryLess } from './types';
+import type { Goal, SuperFood, Alternative, TryLess } from './_components/types';
 
 // Re-export types for backward compatibility with imports like `import { Goal } from '../types'`
 export type { Goal, SuperFood, Alternative, TryLess };

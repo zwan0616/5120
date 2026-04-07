@@ -9,7 +9,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { ArrowRight, Star } from 'lucide-react-native';
-import type { Goal } from '../types';
+import type { Goal } from './types';
 
 const { width } = Dimensions.get('window');
 
