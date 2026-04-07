@@ -3,6 +3,7 @@ import {
   StyleSheet, 
   View, 
   Text, 
+  Image, 
   ScrollView,
   Dimensions
 } from 'react-native';
@@ -17,7 +18,7 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
       <View style={styles.heroSection}>
         <View style={styles.heroImageContainer}>
           <Image 
-            source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCrSM32q7XlPujehh6OBCUPQAxm54TnFOlVSbzvWsgAQtxU0KjG2n5wyUpxc_4EiVW9McN_SUvWo7fgk8Awixd4Pa3jdEu0P8Q8p78PeKWQfha8XySUS0wIWtJoY0QmzMHDRWqRoximNSRa8MU1FTDaC5CUdx0jOUJ054Er76eGsdJN0-JWkgHihX8_2EFJJwNygVT_ZyNmxvi_1ntUT5leg-lVCD4Y9xaNHGfXH1Nuzzzz6aqzUwBC9Mm4r_vONOZSeq1fIQL94nuU' }} 
+            source={{ uri: goal.image }} 
             style={styles.heroImage} 
             resizeMode="contain"
           />
@@ -43,8 +44,12 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
         <View style={styles.grid}>
           {goal.superFoods.map((food, i) => (
             <View key={food.name} style={styles.foodCard}>
-              <View style={styles.foodIconContainer}>
-                <Text style={styles.foodIcon}>{food.emoji || '🥕'}</Text>
+              <View style={styles.foodImageContainer}>
+                <Image 
+                  source={{ uri: food.image }} 
+                  style={styles.foodImage} 
+                  resizeMode="contain"
+                />
               </View>
               <View style={styles.foodInfo}>
                 <View style={styles.foodTitleRow}>
@@ -73,13 +78,21 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
         <View style={styles.tryLessCard}>
           <View style={styles.tryLessContent}>
             <View style={styles.badChoiceIcon}>
-              <Text style={styles.badEmoji}>🍭</Text>
+              <Image 
+                source={{ uri: goal.tryLess.image }} 
+                style={styles.badEmojiImage} 
+                resizeMode="contain"
+              />
             </View>
             <View style={styles.tryLessInfo}>
               <Text style={styles.badName}>{goal.tryLess.name}</Text>
               <Text style={styles.alternativeTip}>{goal.tryLess.alternative.tip}</Text>
               <View style={styles.tryThisRow}>
-                <Text style={styles.goodEmoji}>🫐</Text>
+                <Image 
+                  source={{ uri: goal.tryLess.alternative.image }} 
+                  style={styles.goodEmojiImage} 
+                  resizeMode="contain"
+                />
                 <Text style={styles.tryThisText}>Try {goal.tryLess.alternative.name} instead!</Text>
               </View>
             </View>
@@ -109,15 +122,17 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 96,
   },
   heroImage: {
-    width: '100%',
-    height: '100%',
+    width: '80%',
+    height: '80%',
   },
   heroStar: {
     position: 'absolute',
-    top: -8,
-    right: -8,
+    top: 8,
+    right: 16,
     fontSize: 40,
     color: '#3b82f6',
   },
@@ -206,17 +221,19 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 2,
   },
-  foodIconContainer: {
+  foodImageContainer: {
     width: 80,
     height: 80,
     backgroundColor: '#fff',
     borderRadius: 40,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
     marginRight: 20,
   },
-  foodIcon: {
-    fontSize: 48,
+  foodImage: {
+    width: '100%',
+    height: '100%',
   },
   foodInfo: {
     flex: 1,
@@ -277,10 +294,11 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
   },
-  badEmoji: {
-    fontSize: 48,
-    opacity: 0.5,
+  badEmojiImage: {
+    width: '100%',
+    height: '100%',
   },
   tryLessInfo: {
     flex: 1,
@@ -304,8 +322,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 12,
   },
-  goodEmoji: {
-    fontSize: 24,
+  goodEmojiImage: {
+    width: 32,
+    height: 32,
   },
   tryThisText: {
     fontSize: 18,
