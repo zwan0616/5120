@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   heroTitle: {
-    fontSize: 36,
+    fontSize: 28,
     fontWeight: '900',
     color: '#B45309',
     marginBottom: 8,
