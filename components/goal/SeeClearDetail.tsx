@@ -45,11 +45,7 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
           {goal.superFoods.map((food, i) => (
             <View key={food.name} style={styles.foodCard}>
               <View style={styles.foodImageContainer}>
-                <Image 
-                  source={{ uri: food.image }} 
-                  style={styles.foodImage} 
-                  resizeMode="contain"
-                />
+                <Text style={styles.foodEmoji}>{food.emoji || '🥕'}</Text>
               </View>
               <View style={styles.foodInfo}>
                 <View style={styles.foodTitleRow}>
@@ -78,21 +74,13 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
         <View style={styles.tryLessCard}>
           <View style={styles.tryLessContent}>
             <View style={styles.badChoiceIcon}>
-              <Image 
-                source={{ uri: goal.tryLess.image }} 
-                style={styles.badEmojiImage} 
-                resizeMode="contain"
-              />
+              <Text style={styles.badEmoji}>🍭</Text>
             </View>
             <View style={styles.tryLessInfo}>
               <Text style={styles.badName}>{goal.tryLess.name}</Text>
               <Text style={styles.alternativeTip}>{goal.tryLess.alternative.tip}</Text>
               <View style={styles.tryThisRow}>
-                <Image 
-                  source={{ uri: goal.tryLess.alternative.image }} 
-                  style={styles.goodEmojiImage} 
-                  resizeMode="contain"
-                />
+                <Text style={styles.goodEmoji}>🫐</Text>
                 <Text style={styles.tryThisText}>Try {goal.tryLess.alternative.name} instead!</Text>
               </View>
             </View>
@@ -228,12 +216,10 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 10,
     marginRight: 20,
   },
-  foodImage: {
-    width: '100%',
-    height: '100%',
+  foodEmoji: {
+    fontSize: 48,
   },
   foodInfo: {
     flex: 1,
@@ -294,11 +280,10 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 10,
   },
-  badEmojiImage: {
-    width: '100%',
-    height: '100%',
+  badEmoji: {
+    fontSize: 48,
+    opacity: 0.5,
   },
   tryLessInfo: {
     flex: 1,
@@ -322,9 +307,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 12,
   },
-  goodEmojiImage: {
-    width: 32,
-    height: 32,
+  goodEmoji: {
+    fontSize: 24,
   },
   tryThisText: {
     fontSize: 18,
