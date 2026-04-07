@@ -9,7 +9,7 @@ import {
   Animated
 } from 'react-native';
 import { ArrowRight } from 'lucide-react';
-import { Goal } from '../types';
+import type { Goal } from '../types';
 
 const { width } = Dimensions.get('window');
 

@@ -29,42 +29,13 @@ import ThinkFastDetail from './components/ThinkFastDetail';
 import FightGermsDetail from './components/FightGermsDetail';
 import FeelGoodDetail from './components/FeelGoodDetail';
 import BeStrongDetail from './components/BeStrongDetail';
+import type { Goal, SuperFood, Alternative, TryLess } from './types';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const CARD_WIDTH = (SCREEN_WIDTH - 48 - 24) / 2;
 
-export interface SuperFood {
-  name: string;
-  description: string;
-  image: string;
-  rating?: number;
-}
-
-export interface Alternative {
-  name: string;
-  image: string;
-  tip: string;
-}
-
-export interface TryLess {
-  name: string;
-  image: string;
-  alternative: Alternative;
-}
-
-export interface Goal {
-  id: string;
-  title: string;
-  subtitle: string;
-  icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>;
-  gradient: string[];
-  tilt: 'left' | 'right';
-  bgIcon: string;
-  description: string;
-  mascotTip: string;
-  superFoods: SuperFood[];
-  tryLess: TryLess;
-}
+// Re-export types for backward compatibility
+export type { Goal, SuperFood, Alternative, TryLess };
 
 const GOALS: Goal[] = [
   {
