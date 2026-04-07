@@ -45,9 +45,11 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
           {goal.superFoods.map((food, i) => (
             <View key={food.name} style={styles.foodCard}>
               <View style={styles.foodIconContainer}>
-                <Text style={styles.foodIcon}>{food.emoji || '🥕'}</Text>
-                <Text style={styles.foodIcon}>{food.emoji || '🫐'}</Text>
-                <Text style={styles.foodIcon}>{food.emoji || '🥬'}</Text>
+                <Image
+                  source={{ uri: food.image }}
+                  style={styles.foodImage}
+                  resizeMode="contain"
+                />
               </View>
               <View style={styles.foodInfo}>
                 <View style={styles.foodTitleRow}>
@@ -217,9 +219,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 20,
+    overflow: 'hidden',
   },
-  foodIcon: {
-    fontSize: 48,
+  foodImage: {
+    width: '100%',
+    height: '100%',
   },
   foodInfo: {
     flex: 1,
