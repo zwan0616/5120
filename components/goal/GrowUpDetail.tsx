@@ -14,11 +14,25 @@ const { width } = Dimensions.get('window');
 
 export default function GrowUpDetail({ goal }: { goal: Goal }) {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       {/* Hero Section */}
       <View style={styles.heroSection}>
-        <Text style={styles.heroTitle}>Foods for 🌱 {goal.title}</Text>
-        <Text style={styles.heroSubtitle}>{goal.description}</Text>
+        <View style={styles.heroImageContainer}>
+          <Image 
+            source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCrSM32q7XlPujehh6OBCUPQAxm54TnFOlVSbzvWsgAQtxU0KjG2n5wyUpxc_4EiVW9McN_SUvWo7fgk8Awixd4Pa3jdEu0P8Q8p78PeKWQfha8XySUS0wIWtJoY0QmzMHDRWqRoximNSRa8MU1FTDaC5CUdx0jOUJ054Er76eGsdJN0-JWkgHihX8_2EFJJwNygVT_ZyNmxvi_1ntUT5leg-lVCD4Y9xaNHGfXH1Nuzzzz6aqzUwBC9Mm4r_vONOZSeq1fIQL94nuU' }} 
+            style={styles.heroImage} 
+            resizeMode="contain"
+          />
+          <Text style={styles.heroStar}>★</Text>
+        </View>
+        <View style={styles.heroTextContainer}>
+          <Text style={styles.heroTitle}>Foods for 🌱 {goal.title}</Text>
+          <Text style={styles.heroSubtitle}>{goal.description}</Text>
+        </View>
+        <View style={styles.tipCard}>
+          <Text style={styles.tipText}>{goal.mascotTip}</Text>
+          <View style={styles.tipTriangle} />
+        </View>
       </View>
 
       {/* Super Power Foods */}
@@ -56,7 +70,7 @@ export default function GrowUpDetail({ goal }: { goal: Goal }) {
       <View style={styles.section}>
         <View style={styles.sectionHeader}>
           <View style={[styles.sectionIndicator, { backgroundColor: '#FF8A65' }]} />
-          <Text style={styles.sectionTitle}>Try Less</Text>
+          <Text style={[styles.sectionTitle, { color: '#FF8A65' }]}>Try Less</Text>
         </View>
 
         <View style={styles.tryLessCard}>
@@ -75,8 +89,8 @@ export default function GrowUpDetail({ goal }: { goal: Goal }) {
 
             {/* Transition */}
             <View style={styles.transitionColumn}>
-              <Text style={styles.tipText}>{goal.tryLess.alternative.tip}</Text>
-              <ArrowRight color="#3b82f6" size={32} />
+              <Text style={[styles.tipText, { color: '#4CAF50' }]}>{goal.tryLess.alternative.tip}</Text>
+              <ArrowRight color="#4CAF50" size={32} />
               <Text style={styles.tryThisText}>TRY THIS INSTEAD!</Text>
             </View>
 
@@ -94,32 +108,90 @@ export default function GrowUpDetail({ goal }: { goal: Goal }) {
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  contentContainer: {
     paddingHorizontal: 24,
     paddingTop: 16,
     paddingBottom: 100,
   },
-  mascotTipContainer: {
-    backgroundColor: '#FEF3C7',
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 24,
-    borderLeftWidth: 4,
-    borderLeftColor: '#F59E0B',
+  heroSection: {
+    marginBottom: 40,
+    alignItems: 'center',
   },
-  mascotTip: {
-    fontSize: 15,
-    lineHeight: 22,
-    color: '#92400E',
-    fontWeight: '600',
+  heroImageContainer: {
+    width: 192,
+    height: 192,
+    marginBottom: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  heroImage: {
+    width: '100%',
+    height: '100%',
+  },
+  heroStar: {
+    position: 'absolute',
+    top: -8,
+    right: -8,
+    fontSize: 40,
+    color: '#4CAF50',
+  },
+  heroTextContainer: {
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  heroTitle: {
+    fontSize: 32,
+    fontWeight: '900',
+    color: '#36392c',
+    textAlign: 'center',
+  },
+  heroSubtitle: {
+    fontSize: 20,
+    color: '#4CAF50',
+    fontWeight: '700',
     marginTop: 8,
     textAlign: 'center',
+  },
+  tipCard: {
+    backgroundColor: '#fff',
+    padding: 24,
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 4,
+    borderWidth: 2,
+    borderColor: 'rgba(0,0,0,0.05)',
+    maxWidth: 320,
+  },
+  tipText: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#36392c',
+    textAlign: 'center',
+    lineHeight: 24,
+  },
+  tipTriangle: {
+    position: 'absolute',
+    top: -12,
+    left: '50%',
+    marginLeft: -12,
+    width: 24,
+    height: 24,
+    backgroundColor: '#fff',
+    transform: [{ rotate: '45deg' }],
+    borderLeftWidth: 2,
+    borderTopWidth: 2,
+    borderColor: 'rgba(0,0,0,0.05)',
   },
   section: {
     marginBottom: 40,
@@ -139,7 +211,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: '900',
-    color: '#36392c',
+    color: '#4CAF50',
   },
   grid: {
     gap: 16,
@@ -185,7 +257,7 @@ const styles = StyleSheet.create({
     color: '#36392c',
   },
   star: {
-    color: '#3b82f6',
+    color: '#4CAF50',
     fontSize: 14,
   },
   badge: {
@@ -211,7 +283,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 4,
     borderWidth: 1,
-    borderColor: 'rgba(0,0,0,0.05)',
+    borderColor: 'rgba(76, 175, 80, 0.2)',
   },
   tryLessContent: {
     flexDirection: 'column',
@@ -257,14 +329,14 @@ const styles = StyleSheet.create({
   tryThisText: {
     fontSize: 12,
     fontWeight: '900',
-    color: '#3b82f6',
+    color: '#4CAF50',
     marginTop: 8,
     letterSpacing: 1,
   },
   goodImageContainer: {
     width: 120,
     height: 120,
-    backgroundColor: '#E3F2FD',
+    backgroundColor: '#E8F5E9',
     borderRadius: 60,
     alignItems: 'center',
     justifyContent: 'center',
