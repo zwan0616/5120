@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  StyleSheet, 
-  View, 
-  Text, 
-  Image, 
+import {
+  Dimensions,
+  Image,
   ScrollView,
-  Dimensions
+  StyleSheet,
+  Text,
+  View
 } from 'react-native';
 import type { Goal } from './types';
 
@@ -17,9 +17,9 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
       {/* Hero Section */}
       <View style={styles.heroSection}>
         <View style={styles.heroImageContainer}>
-          <Image 
-            source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCrSM32q7XlPujehh6OBCUPQAxm54TnFOlVSbzvWsgAQtxU0KjG2n5wyUpxc_4EiVW9McN_SUvWo7fgk8Awixd4Pa3jdEu0P8Q8p78PeKWQfha8XySUS0wIWtJoY0QmzMHDRWqRoximNSRa8MU1FTDaC5CUdx0jOUJ054Er76eGsdJN0-JWkgHihX8_2EFJJwNygVT_ZyNmxvi_1ntUT5leg-lVCD4Y9xaNHGfXH1Nuzzzz6aqzUwBC9Mm4r_vONOZSeq1fIQL94nuU' }} 
-            style={styles.heroImage} 
+          <Image
+            source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCrSM32q7XlPujehh6OBCUPQAxm54TnFOlVSbzvWsgAQtxU0KjG2n5wyUpxc_4EiVW9McN_SUvWo7fgk8Awixd4Pa3jdEu0P8Q8p78PeKWQfha8XySUS0wIWtJoY0QmzMHDRWqRoximNSRa8MU1FTDaC5CUdx0jOUJ054Er76eGsdJN0-JWkgHihX8_2EFJJwNygVT_ZyNmxvi_1ntUT5leg-lVCD4Y9xaNHGfXH1Nuzzzz6aqzUwBC9Mm4r_vONOZSeq1fIQL94nuU' }}
+            style={styles.heroImage}
             resizeMode="contain"
           />
           <Text style={styles.heroStar}>★</Text>
@@ -44,12 +44,10 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
         <View style={styles.grid}>
           {goal.superFoods.map((food, i) => (
             <View key={food.name} style={styles.foodCard}>
-              <View style={styles.foodImageContainer}>
-                <Image 
-                  source={{ uri: food.image }} 
-                  style={styles.foodImage} 
-                  resizeMode="contain"
-                />
+              <View style={styles.foodIconContainer}>
+                <Text style={styles.foodIcon}>{food.emoji || '🥕'}</Text>
+                <Text style={styles.foodIcon}>{food.emoji || '🫐'}</Text>
+                <Text style={styles.foodIcon}>{food.emoji || '🥬'}</Text>
               </View>
               <View style={styles.foodInfo}>
                 <View style={styles.foodTitleRow}>
@@ -211,19 +209,17 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 2,
   },
-  foodImageContainer: {
+  foodIconContainer: {
     width: 80,
     height: 80,
     backgroundColor: '#fff',
     borderRadius: 40,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 10,
     marginRight: 20,
   },
-  foodImage: {
-    width: '100%',
-    height: '100%',
+  foodIcon: {
+    fontSize: 48,
   },
   foodInfo: {
     flex: 1,
