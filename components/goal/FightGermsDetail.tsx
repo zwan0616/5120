@@ -5,16 +5,23 @@ import {
   Text, 
   Image, 
   ScrollView,
-  Dimensions
+  Dimensions,
+  TouchableOpacity
 } from 'react-native';
-import { ShieldCheck } from 'lucide-react-native';
+import { ShieldCheck, ArrowLeft } from 'lucide-react-native';
 import type { Goal } from './types';
 
 const { width } = Dimensions.get('window');
 
-export default function FightGermsDetail({ goal }: { goal: Goal }) {
+export default function FightGermsDetail({ goal, onBack }: { goal: Goal; onBack?: () => void }) {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      {/* Custom Back Button */}
+      <TouchableOpacity style={styles.backButton} onPress={onBack}>
+        <ArrowLeft color="#E91E63" size={28} />
+        <Text style={styles.backButtonText}>Back to Goals</Text>
+      </TouchableOpacity>
+
       {/* Hero Section */}
       <View style={styles.heroSection}>
         <View style={styles.heroCard}>
@@ -109,6 +116,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 16,
     paddingBottom: 100,
+  },
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 16,
+    alignSelf: 'flex-start',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    backgroundColor: '#FCE4EC',
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#E91E63',
+  },
+  backButtonText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#E91E63',
   },
   heroSection: {
     marginBottom: 32,

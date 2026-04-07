@@ -5,15 +5,23 @@ import {
   Text, 
   Image, 
   ScrollView,
-  Dimensions
+  Dimensions,
+  TouchableOpacity
 } from 'react-native';
+import { ArrowLeft } from 'lucide-react-native';
 import type { Goal } from './types';
 
 const { width } = Dimensions.get('window');
 
-export default function ThinkFastDetail({ goal }: { goal: Goal }) {
+export default function ThinkFastDetail({ goal, onBack }: { goal: Goal; onBack?: () => void }) {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      {/* Custom Back Button */}
+      <TouchableOpacity style={styles.backButton} onPress={onBack}>
+        <ArrowLeft color="#3b82f6" size={28} />
+        <Text style={styles.backButtonText}>Back to Goals</Text>
+      </TouchableOpacity>
+
       {/* Hero Section */}
       <View style={styles.heroSection}>
         <View style={styles.heroCard}>
@@ -104,6 +112,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 16,
     paddingBottom: 100,
+  },
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 16,
+    alignSelf: 'flex-start',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    backgroundColor: '#E3F2FD',
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#3b82f6',
+  },
+  backButtonText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#3b82f6',
   },
   mascotTipContainer: {
     backgroundColor: '#FEF3C7',
