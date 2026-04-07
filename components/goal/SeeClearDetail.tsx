@@ -3,7 +3,6 @@ import {
   StyleSheet, 
   View, 
   Text, 
-  Image, 
   ScrollView,
   Dimensions
 } from 'react-native';
@@ -44,12 +43,8 @@ export default function SeeClearDetail({ goal }: { goal: Goal }) {
         <View style={styles.grid}>
           {goal.superFoods.map((food, i) => (
             <View key={food.name} style={styles.foodCard}>
-              <View style={styles.foodImageContainer}>
-                <Image 
-                  source={{ uri: food.image }} 
-                  style={styles.foodImage} 
-                  resizeMode="contain"
-                />
+              <View style={styles.foodIconContainer}>
+                <Text style={styles.foodIcon}>{food.emoji || '🥕'}</Text>
               </View>
               <View style={styles.foodInfo}>
                 <View style={styles.foodTitleRow}>
@@ -211,19 +206,17 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 2,
   },
-  foodImageContainer: {
+  foodIconContainer: {
     width: 80,
     height: 80,
     backgroundColor: '#fff',
     borderRadius: 40,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 10,
     marginRight: 20,
   },
-  foodImage: {
-    width: '100%',
-    height: '100%',
+  foodIcon: {
+    fontSize: 48,
   },
   foodInfo: {
     flex: 1,
