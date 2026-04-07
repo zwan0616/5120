@@ -23,13 +23,13 @@ import {
   ArrowLeft,
   Flag,
 } from 'lucide-react-native';
-import GrowUpDetail from '../../../components/goal/GrowUpDetail';
-import SeeClearDetail from '../../../components/goal/SeeClearDetail';
-import ThinkFastDetail from '../../../components/goal/ThinkFastDetail';
-import FightGermsDetail from '../../../components/goal/FightGermsDetail';
-import FeelGoodDetail from '../../../components/goal/FeelGoodDetail';
-import BeStrongDetail from '../../../components/goal/BeStrongDetail';
-import type { Goal, SuperFood, Alternative, TryLess } from '../../../components/goal/types';
+import GrowUpDetail from '../../components/goal/GrowUpDetail';
+import SeeClearDetail from '../../components/goal/SeeClearDetail';
+import ThinkFastDetail from '../../components/goal/ThinkFastDetail';
+import FightGermsDetail from '../../components/goal/FightGermsDetail';
+import FeelGoodDetail from '../../components/goal/FeelGoodDetail';
+import BeStrongDetail from '../../components/goal/BeStrongDetail';
+import type { Goal, SuperFood, Alternative, TryLess } from '../../components/goal/types';
 
 // Re-export types for backward compatibility with imports like `import { Goal } from '../types'`
 export type { Goal, SuperFood, Alternative, TryLess };
